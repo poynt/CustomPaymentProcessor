@@ -20,5 +20,5 @@
         value >=601056 && value <= 601056 -->
     <!-- for eval expression definition please refer to https://github.com/uklimaschewski/EvalEx -->
     <entry_method type="CUSTOM" />
-    <entry_method type="CARDREAD"></entry_method>
+    <entry_method type="CARDREAD" />
 </capability>

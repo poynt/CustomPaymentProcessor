@@ -3,6 +3,7 @@ package com.custom.processor;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import co.poynt.os.model.PoyntError;
  */
 public class CustomPaymentFragment extends DialogFragment {
     private static final String ARG_TRANSACTION = "transaction";
+    private static final String TAG = "CustomPaymentFragment";
     private Transaction transaction;
     private OnFragmentInteractionListener mListener;
 
@@ -88,6 +90,9 @@ public class CustomPaymentFragment extends DialogFragment {
             }
         });
 
+        // here you can display a custom image and message on the second screen
+        // if null is passed as the image, poynt defaults to merchant's background image
+        mListener.displaySecondScreen(null, "Please pay...");
         return view;
     }
 
@@ -119,8 +124,10 @@ public class CustomPaymentFragment extends DialogFragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Transaction transaction, PoyntError error);
+
+        void displaySecondScreen(Bitmap image, String message);
     }
+
 
 }
