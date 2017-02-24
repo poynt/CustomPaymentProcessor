@@ -1,15 +1,8 @@
-Poynt Sample
+Poynt Custom Payment Processor
 ============
-The purpose of this sample app is to demonstrate a simple integration with PoyntOS SDK to build apps that run on PoyntOS.
+The purpose of this sample app is to demonstrate a simple custom payment processor with PoyntOS SDK to add a custom payment method to Payment Fragment.
 
-Couple of things to note here:
-
-1. Permissions in AndroidManifest.xml - these are required to make sure your application can invoke
-the Poynt Services and access Data from the Poynt Content Providers.
-2. Binding/Unbinding to the PoyntServices is required as with any AIDL service on android.
-3. Poynt Authenticator is used to support Poynt Accounts (Business users 'aka' employees) logins
- through the Android Account Manager interface.
-
+More Docs to come...
 
 Building & Running
 ============
