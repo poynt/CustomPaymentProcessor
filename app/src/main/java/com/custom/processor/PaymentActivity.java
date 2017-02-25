@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import co.poynt.api.model.Transaction;
 import co.poynt.os.model.Intents;
 import co.poynt.os.model.PoyntError;
+import co.poynt.os.services.v1.IPoyntSecondScreenCashbackEntryListener;
 import co.poynt.os.services.v1.IPoyntSecondScreenService;
 
 public class PaymentActivity extends Activity implements
@@ -75,7 +76,22 @@ public class PaymentActivity extends Activity implements
         Log.d(TAG, "displaySecondScreen");
         if (mSecondScreenService != null) {
             try {
-                mSecondScreenService.displayMessage(message, image);
+                //if you need to display some message to the user
+                // mSecondScreenService.displayMessage(message, image);
+                // if you need to collect cash back
+                mSecondScreenService.captureCashback(1000, // txn amount
+                        0, // tip amount
+                        100000, // cashback limit
+                        "USD", // currency
+                        false, // do not timeout
+                        0,
+                        new IPoyntSecondScreenCashbackEntryListener.Stub() {
+                            @Override
+                            public void onCashbackResponse(long l) throws RemoteException {
+                                Log.d(TAG, "Cashback collected:" + l);
+                            }
+                        }
+                );
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
